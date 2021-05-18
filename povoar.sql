@@ -203,9 +203,10 @@ INSERT INTO Promotion values(NULL, 50, strftime('%s', '2018-02-27'), strftime('%
 INSERT INTO Promotion values(NULL, 99, strftime('%s', '2021-01-04'), strftime('%s', '2021-01-31'));
 INSERT INTO Promotion values(NULL, 80, strftime('%s', '2020-06-14'), strftime('%s', '2020-07-20'));
 INSERT INTO Promotion values(NULL, 10, strftime('%s', '2019-12-04'), strftime('%s', '2020-01-05'));
-INSERT INTO Promotion values(NULL, 75, strftime('%s', '2021-03-01'), strftime('%s', '2021-05-29'));
+INSERT INTO Promotion values(NULL, 50, strftime('%s', '2021-03-01'), strftime('%s', '2021-06-29'));
 INSERT INTO Promotion values(NULL, 25, strftime('%s', '2020-09-20'), strftime('%s', '2020-09-28'));
 INSERT INTO Promotion values(NULL, 50, strftime('%s', '2019-05-03'), strftime('%s', '2019-06-14'));
+INSERT INTO Promotion values(NULL, 25, strftime('%s', '2021-05-01'), strftime('%s', '2021-07-15'));
 
 
 INSERT INTO GameDeveloper values(14, 'fromsoftware');
@@ -277,6 +278,11 @@ INSERT INTO GamePromotion values(4, 2);
 INSERT INTO GamePromotion values(10, 3);
 INSERT INTO GamePromotion values(12, 4);
 INSERT INTO GamePromotion values(9, 5);
+INSERT INTO GamePromotion values(10, 5);
+INSERT INTO GamePromotion values(11, 5);
+INSERT INTO GamePromotion values(4, 5);
+INSERT INTO GamePromotion values(4, 8);
+INSERT INTO GamePromotion values(5, 8);
+INSERT INTO GamePromotion values(6, 8);
 INSERT INTO GamePromotion values(8, 6);
 INSERT INTO GamePromotion values(2, 7);
-

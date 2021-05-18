@@ -117,7 +117,7 @@ CREATE TABLE ReleaseOS(
 CREATE TABLE Purchase(
     user TEXT NOT NULL REFERENCES User,
     game INTEGER NOT NULL REFERENCES Game,
-    price REAL NOT NULL,
+    price REAL,
     date DATE NOT NULL CHECK (date > 0),
     billing_address INTEGER NOT NULL REFERENCES Address,
     PRIMARY KEY(user, game)
