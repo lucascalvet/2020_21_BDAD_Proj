@@ -1,6 +1,6 @@
 DROP TRIGGER IF EXISTS validReview;
 CREATE TRIGGER validReview
-AFTER INSERT ON Review
+BEFORE INSERT ON Review
 WHEN NOT EXISTS (
     SELECT * 
     FROM Purchase

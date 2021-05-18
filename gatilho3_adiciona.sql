@@ -1,6 +1,6 @@
 DROP TRIGGER IF EXISTS generatePrice;
 CREATE TRIGGER generatePrice
-AFTER INSERT ON Purchase
+BEFORE INSERT ON Purchase
 WHEN (NEW.price IS NULL)
 BEGIN
   UPDATE Purchase SET price=(
