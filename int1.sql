@@ -11,7 +11,7 @@ FROM Game NATURAL JOIN (
 -- Jogos com promoções TODO: Mudar para mostrar tb jogos sem promoções e ordenar por preço
 /*
 SELECT title, price, percentage AS promotion
-FROM Game JOIN (
+FROM Game NATURAL JOIN (
     SELECT game AS id, percentage
     FROM GamePromotion NATURAL JOIN (
         SELECT id AS promotion, percentage
@@ -23,12 +23,18 @@ FROM Game JOIN (
 
 -- Lista de mensagens no dia 24-05-2020
 /*
-SELECT sender, receiver, text, date
+SELECT sender, receiver, text, datetime(date, 'unixepoch') AS date
 FROM MessageReceiver NATURAL JOIN (
     SELECT id as message, text, date, sender 
     FROM Message 
     WHERE date >= strftime('%s', '2020-05-24 00:00:00') AND date <= strftime('%s', '2020-05-24 23:59:59')
 );
+*/
+
+-- Nº de achievments por utilizador, por jogo
+/*
+SELECT
+SELECT game, COUNT(id) FROM Achievements GROUP BY game;
 */
 
 -- Lista de Amigos de um utilizador
@@ -38,11 +44,13 @@ FROM MessageReceiver NATURAL JOIN (
         AND username != 'jfred24');
 */
 
-
 -- NUMERO DE X POR Y
--- Numero de jogos por utilizador TODO: Mostrar tb o display_name de cada um?
+-- Numero de jogos por utilizador
 /*
-    SELECT user, COUNT(game) FROM Purchase GROUP BY user;
+    SELECT display_name, username, nr_games
+    FROM User NATURAL JOIN (
+        SELECT user AS username, COUNT(game) AS nr_games FROM Purchase GROUP BY user
+    );
 */
 
 -- Numero de releases por jogo
@@ -79,7 +87,15 @@ FROM MessageReceiver NATURAL JOIN (
 
 -- Lista de jogos em comum entre dois utilizadores
 /*
-    SELECT title from (SELECT title, count(title) as title_count from (SELECT user, title FROM Purchase,Game Where game = game.id and (user = 'lucascs' or user = 'souto')) GROUP BY title) where title_count = 2;
+    SELECT title FROM (
+        SELECT title, count(title) AS title_count 
+        FROM (
+            SELECT user, title 
+            FROM Purchase,Game 
+            WHERE game = game.id 
+            AND (user = 'lucascs' OR user = 'souto')) 
+        GROUP BY title) 
+    WHERE title_count = 2;
 */
 
 -- Publisher com mais jogos publicados
@@ -96,10 +112,3 @@ FROM MessageReceiver NATURAL JOIN (
 /*
     SELECT title, publisher, developer FROM game, (gamepublisher NATURAL JOIN gamedeveloper) WHERE game = game.id AND publisher = 'feupgames' AND developer = 'fromsoftware'; 
 */
-
-
-
-
-
-
-
