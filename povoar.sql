@@ -27,6 +27,7 @@ INSERT INTO Release values(NULL, '1.0.1.4', strftime('%s', '2020-02-24'), 7.39, 
 INSERT INTO Release values(NULL, '1.5.4', strftime('%s', '2016-02-26'), 0.5, NULL, 6); --stardew valley
 INSERT INTO Release values(NULL, '1.2', strftime('%s', '2016-12-12'), 6, NULL, 10); --dishonered
 INSERT INTO Release values(NULL, '1.0', strftime('%s', '2018-05-23'), 7, 'The remastered version has arrived!', 14); --dank souls
+INSERT INTO Release values(NULL, '1.1', strftime('%s', '2018-05-24'), 7, 'The remastered version has arrived!', 14); --dank souls
 
 
 INSERT INTO Tag values('FPS');
