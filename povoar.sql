@@ -135,7 +135,7 @@ INSERT INTO Friends values('johndoe','janedoe');
 
 
 INSERT INTO Message values(NULL, "Hello Freddy boy", strftime('%s', '2020-05-24 11:10:35'), 'lucascs');
-INSERT INTO Message values(NULL, "O que é que queres puto?", strftime('%s', '2020-05-24 11:11:47'), 'jfred24');
+INSERT INTO Message values(NULL, "O que é que queres?", strftime('%s', '2020-05-24 11:11:47'), 'jfred24');
 INSERT INTO Message values(NULL, "Congrats", strftime('%s', '2020-05-24 11:11:59'), 'lucascs');
 INSERT INTO Message values(NULL, "Brigadão mano", strftime('%s', '2020-05-24 11:12:38'), 'jfred24');
 INSERT INTO Message values(NULL, "S2", strftime('%s', '2021-04-05 23:50:38'), 'melmel');
@@ -195,6 +195,8 @@ INSERT INTO Review values('lucascs', 3, 5, "Best Game I ever seen. A piece of ar
 INSERT INTO Review values('jfred24', 14, 3, "A good game but too ez pz for my taste");
 INSERT INTO Review values('melmel', 3, 5, "Only a handsome genius would produce a masterpiece of this magnitude");
 INSERT INTO Review values('souto', 4, 5, "Oh man this use of the RTC, where would this guy get such an idea...");
+INSERT INTO Review values('zeppf', 4, 4, "It's just amazing, fire and water coming together as a team.");
+INSERT INTO Review values('souto', 3, 3, "It's subpar, but playable nonetheless. I think I've seen this RTC somewhere else...");
 
 
 INSERT INTO Promotion values(NULL, 50, strftime('%s', '2018-02-27'), strftime('%s', '2018-03-15'));
