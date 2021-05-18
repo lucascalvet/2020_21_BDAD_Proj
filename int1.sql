@@ -1,4 +1,37 @@
---Lista de Amigos de um utilizador
+-- Melhores jogos ordenados pela média do score das reviews, mostrando essa média e o nº de reviews
+/*
+SELECT title, score, nr_reviews
+FROM Game NATURAL JOIN (
+    SELECT game AS id, AVG(score) AS score, COUNT(score) AS nr_reviews
+    FROM Review
+    GROUP BY game
+) ORDER BY score DESC;
+*/
+
+-- Jogos com promoções TODO: Mudar para mostrar tb jogos sem promoções e ordenar por preço
+/*
+SELECT title, price, percentage AS promotion
+FROM Game JOIN (
+    SELECT game AS id, percentage
+    FROM GamePromotion NATURAL JOIN (
+        SELECT id AS promotion, percentage
+        FROM Promotion
+        WHERE starting_date <= strftime('%s','now') AND finishing_date >= strftime('%s','now')
+    )
+) ORDER BY price;
+*/
+
+-- Lista de mensagens no dia 24-05-2020
+/*
+SELECT sender, receiver, text, date
+FROM MessageReceiver NATURAL JOIN (
+    SELECT id as message, text, date, sender 
+    FROM Message 
+    WHERE date >= strftime('%s', '2020-05-24 00:00:00') AND date <= strftime('%s', '2020-05-24 23:59:59')
+);
+*/
+
+-- Lista de Amigos de um utilizador
 /*
     SELECT DISTINCT display_name FROM friends NATURAL JOIN user WHERE 
         ((user1 = username OR user2 = username) AND (user1 = 'jfred24' OR user2 = 'jfred24')
@@ -7,7 +40,7 @@
 
 
 -- NUMERO DE X POR Y
--- Numero de jogos por utilizador
+-- Numero de jogos por utilizador TODO: Mostrar tb o display_name de cada um?
 /*
     SELECT user, COUNT(game) FROM Purchase GROUP BY user;
 */
