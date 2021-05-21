@@ -186,6 +186,7 @@ INSERT INTO Purchase values('souto', 3, 109.99, strftime('%s', '2020-01-03'), 8)
 
 
 INSERT INTO UserAchievements values('lucascs', 4);
+INSERT INTO UserAchievements values('lucascs', 5);
 INSERT INTO UserAchievements values('zeppf', 6);
 INSERT INTO UserAchievements values('jfred24', 8);
 INSERT INTO UserAchievements values('souto', 5);
