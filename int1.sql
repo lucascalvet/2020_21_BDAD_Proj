@@ -85,6 +85,17 @@ SELECT game, COUNT(id) FROM Achievements GROUP BY game;
     SELECT user, title FROM Purchase,Game Where game = game.id and user = 'lucascs'; 
 */
 
+-- Lista de achievements de cada utilizador
+/*
+    SELECT title, user FROM Achievements, UserAchievements WHERE achievement = achievements.id;
+    SELECT id, user FROM Achievements, UserAchievements WHERE achievement = achievements.id;
+*/ -- second one shows id instead
+
+--Lista de achievements de cada jogo --shows id instead of game title
+/*
+    select title, game from Achievements natural join (select id from Game) group by id;
+*/
+
 -- Lista de jogos em comum entre dois utilizadores
 /*
     SELECT title FROM (
