@@ -156,14 +156,6 @@ INSERT INTO MessageReceiver values(8, 'inesinhaowo');
 INSERT INTO MessageReceiver values(9, 'watson');
 
 
-INSERT INTO Achievements values(NULL, "Good Goose", "Honk if you are happy" , 1);
-INSERT INTO Achievements values(NULL, "Bad Goose", "Honk if you don't like ducks" , 1);
-INSERT INTO Achievements values(NULL, "Cuplead", "Take damage one thousand times" , 2);
-INSERT INTO Achievements values(NULL, "I saw that LCOMing", "Predict the trajectory of a bullet and destroy it with a bullet of your own." , 3);
-INSERT INTO Achievements values(NULL, "Richard MiNixon", "Cheat and lose" , 3);
-INSERT INTO Achievements values(NULL, "Take out my fire baby!", "Get a girlfriend or boyfriend and play this game with her/him." , 4); 
-INSERT INTO Achievements values(NULL, "The good type of bug", "Beat the game without taking damage" , 5);
-INSERT INTO Achievements values(NULL, "The Dark Souls of Dark Souls", "Beat the final boss" , 14);
 
 
 INSERT INTO ReleaseOS values(1, 'Windows');
@@ -184,11 +176,23 @@ INSERT INTO Purchase values('jfred24', 14, 39.99, strftime('%s', '2017-05-26'), 
 INSERT INTO Purchase values('souto', 4, 99.99, strftime('%s', '2020-01-03'), 8);
 INSERT INTO Purchase values('souto', 3, 109.99, strftime('%s', '2020-01-03'), 8);
 
+INSERT INTO Achievements values(NULL, "Good Goose", "Honk if you are happy" , 1);
+INSERT INTO Achievements values(NULL, "Bad Goose", "Honk if you don't like ducks" , 1);
+INSERT INTO Achievements values(NULL, "Cuplead", "Take damage one thousand times" , 2);
+INSERT INTO Achievements values(NULL, "I saw that LCOMing", "Predict the trajectory of a bullet and destroy it with a bullet of your own." , 3);
+INSERT INTO Achievements values(NULL, "Richard MiNixon", "Cheat and lose" , 3);
+INSERT INTO Achievements values(NULL, "Take out my fire baby!", "Get a girlfriend or boyfriend and play this game with her/him." , 4); 
+INSERT INTO Achievements values(NULL, "The good type of bug", "Beat the game without taking damage" , 5);
+INSERT INTO Achievements values(NULL, "The Dark Souls of Dark Souls", "Beat the final boss" , 14);
+
 
 INSERT INTO UserAchievements values('lucascs', 4);
 INSERT INTO UserAchievements values('lucascs', 5);
 INSERT INTO UserAchievements values('zeppf', 6);
 INSERT INTO UserAchievements values('jfred24', 8);
+INSERT INTO UserAchievements values('jfred24', 7);
+INSERT INTO UserAchievements values('jfred24', 4);
+INSERT INTO UserAchievements values('jfred24', 5);
 INSERT INTO UserAchievements values('souto', 5);
 
 
