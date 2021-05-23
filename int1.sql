@@ -80,21 +80,74 @@ SELECT game, COUNT(id) FROM Achievements GROUP BY game;
     SELECT user, title FROM Purchase,Game Where game = game.id; 
 */
 
--- Lista de jogos de um utilizador
-/*
-    SELECT user, title FROM Purchase,Game Where game = game.id and user = 'lucascs'; 
-*/
-
 -- Lista de achievements de cada utilizador
 /*
     SELECT title, user FROM Achievements, UserAchievements WHERE achievement = achievements.id;
     SELECT id, user FROM Achievements, UserAchievements WHERE achievement = achievements.id;
 */ -- second one shows id instead
 
---Lista de achievements de cada jogo --shows id instead of game title
+-- Lista de achievements de um utilizador
+/*
+    SELECT title, user FROM Achievements, UserAchievements WHERE user = 'lucascs' and achievement = achievements.id;
+*/
+
+--Lista de achievements de cada jogo --temporary shows id instead of game title
 /*
     select title, game from Achievements natural join (select id from Game) group by id;
+    select achievements.id, game from Achievements natural join (select id from Game where id = 1) group by id;
+*/  --second one is all ids instead
+
+--Lista de achievements de um jogo especifico
+/*
+    select title, game from Achievements where game = 3;
 */
+
+--Lista de achievements ganhos por um utilizador de um jogo especifico
+/*
+    select user, achievements.title From UserAchievements,Achievements where UserAchievements.achievement = achievements.id and achievements.game = 3 and user = 'lucascs';
+*/
+
+--Número de achievements ganhos por um utilizador de um jogo especifico
+/*
+    select user, count(user) as number_achievements from (select user, game From UserAchievements,Achievements where UserAchievements.achievement = achievements.id and achievements.game = 3 and user = 'lucascs');
+*/
+
+--Utilizadores com todos os achievements de um jogo
+/*
+    select user, count(user) as number_achievements from (select user, game, Achievements.title From UserAchievements,Achievements,Game where UserAchievements.achievement = achievements.id and achievements.game = game.id and (achievements.game = 3 or user = 'lucascs'));
+*/
+
+/*
+    SELECT idReparacao
+    FROM Reparacao
+    WHERE idReparacao NOT IN
+        (SELECT username AS username1 FROM User,
+    Achievements
+         WHERE id NOT IN
+            (SELECT idEspecialidade
+            FROM FuncionarioReparacao,Funcionario
+            WHERE
+    FuncionarioReparacao.idFuncionario=Funcionario.idFuncionario AND
+    FuncionarioReparacao.idReparacao=idReparacao1));
+*/
+
+
+--Quantos achievements tem um jogo especifico
+/*
+    select game.title, count(achievements.title) as number_achievements from Achievements,Game where achievements.game = 3 and game.id = achievements.game;
+*/
+
+-- Lista de jogos de um utilizador
+/*
+    SELECT user, title FROM Purchase,Game Where game = game.id and user = 'lucascs'; 
+*/
+
+-- Users com pelo menos um achievement num dado jogo
+/*                                                           
+    select distinct user From UserAchievements where achievement in (    
+    select id from Achievements where game = 3);
+*/
+
 
 -- Lista de jogos em comum entre dois utilizadores
 /*
@@ -122,4 +175,16 @@ SELECT game, COUNT(id) FROM Achievements GROUP BY game;
 -- Lista dos Jogos publicados por um determinado Publisher, que foram desenvolvidos por um determinado Developer
 /*
     SELECT title, publisher, developer FROM game, (gamepublisher NATURAL JOIN gamedeveloper) WHERE game = game.id AND publisher = 'feupgames' AND developer = 'fromsoftware'; 
+*/
+
+
+-- divisao in progress
+/*
+select username from User where username not in
+    (select username as username1 from User, Achievements
+    where achievements.id not in
+    (select achievements.id From UserAchievements, User
+    where UserAchievements.user = username1 and UserAchievements.achievement=
+    achievements.id));
+
 */
