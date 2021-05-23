@@ -31,11 +31,26 @@ FROM MessageReceiver NATURAL JOIN (
 );
 */
 
--- Nº de achievments por utilizador, por jogo
+-- Nº de achievements de um utilizador, em jogos com pelo menos um achievement, e respetiva percentagem de passagem do jogo
 /*
-SELECT
-SELECT game, COUNT(id) FROM Achievements GROUP BY game;
+SELECT title, nr_achievements, total_achievements, CAST(ROUND(100.0 * nr_achievements/total_achievements, 2) AS NVARCHAR(5)) + '%' AS completion_percentage
+FROM (
+    SELECT game, COUNT(id) as nr_achievements
+    FROM Achievements NATURAL JOIN (
+        SELECT achievement AS id
+        FROM UserAchievements
+        WHERE user='jfred24'
+    ) GROUP BY game
+) NATURAL JOIN (
+    SELECT game, COUNT(id) AS total_achievements
+    FROM Achievements
+    GROUP BY game
+) NATURAL JOIN (
+    SELECT id AS game, title
+    FROM Game
+);
 */
+
 
 -- Lista de Amigos de um utilizador
 /*
@@ -117,20 +132,27 @@ SELECT game, COUNT(id) FROM Achievements GROUP BY game;
     select user, count(user) as number_achievements from (select user, game, Achievements.title From UserAchievements,Achievements,Game where UserAchievements.achievement = achievements.id and achievements.game = game.id and (achievements.game = 3 or user = 'lucascs'));
 */
 
+--Utilizadores com todos os achievements de um ou mais jogos
 /*
-    SELECT idReparacao
-    FROM Reparacao
-    WHERE idReparacao NOT IN
-        (SELECT username AS username1 FROM User,
-    Achievements
-         WHERE id NOT IN
-            (SELECT idEspecialidade
-            FROM FuncionarioReparacao,Funcionario
-            WHERE
-    FuncionarioReparacao.idFuncionario=Funcionario.idFuncionario AND
-    FuncionarioReparacao.idReparacao=idReparacao1));
+    SELECT username, display_name
+    FROM User
+    WHERE username NOT IN (
+        SELECT username FROM User, (
+            SELECT id AS ach_id
+            FROM Achievements
+            WHERE game IN (
+                SELECT id
+                FROM Game
+                WHERE title="Tankinix" OR title="Hollow Knight"
+            )
+        )
+        WHERE ach_id NOT IN (
+            SELECT achievement AS got_ach_id
+            FROM UserAchievements
+            WHERE UserAchievements.user=username
+        )
+    );
 */
-
 
 --Quantos achievements tem um jogo especifico
 /*

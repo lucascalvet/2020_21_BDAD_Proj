@@ -184,6 +184,7 @@ INSERT INTO Achievements values(NULL, "Richard MiNixon", "Cheat and lose" , 3);
 INSERT INTO Achievements values(NULL, "Take out my fire baby!", "Get a girlfriend or boyfriend and play this game with her/him." , 4); 
 INSERT INTO Achievements values(NULL, "The good type of bug", "Beat the game without taking damage" , 5);
 INSERT INTO Achievements values(NULL, "The Dark Souls of Dark Souls", "Beat the final boss" , 14);
+INSERT INTO Achievements values(NULL, "Super Goose", "Turn yourself into a super Goose!" , 1);
 
 
 INSERT INTO UserAchievements values('lucascs', 4);
@@ -193,6 +194,7 @@ INSERT INTO UserAchievements values('jfred24', 8);
 INSERT INTO UserAchievements values('jfred24', 7);
 INSERT INTO UserAchievements values('jfred24', 4);
 INSERT INTO UserAchievements values('jfred24', 5);
+INSERT INTO UserAchievements values('jfred24', 9);
 INSERT INTO UserAchievements values('souto', 5);
 
 
