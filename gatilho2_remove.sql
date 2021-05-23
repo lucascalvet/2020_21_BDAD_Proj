@@ -1,1 +1,3 @@
-DROP TRIGGER IF EXISTS updatebalance;
+PRAGMA foreign_keys=ON;
+
+DROP TRIGGER IF EXISTS validFriends;

@@ -1,1 +1,3 @@
+PRAGMA foreign_keys=ON;
+
 DROP TRIGGER IF EXISTS validReview;

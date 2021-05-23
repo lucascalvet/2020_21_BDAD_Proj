@@ -1,17 +1,8 @@
-/*
-UPDATE User SET balance=100 WHERE username='lucascs';
-SELECT username, balance FROM User WHERE username='lucascs';
-DELETE FROM Purchase WHERE user='lucascs' AND game=4;
-INSERT INTO Purchase VALUES('lucascs', 4, 120.0, strftime('%s', '2021-01-05'), 1);
-SELECT username, balance FROM User WHERE username='lucascs';
-INSERT INTO Purchase VALUES('lucascs', 4, NULL, strftime('%s', '2021-01-05'), 1);
-SELECT username, balance FROM User WHERE username='lucascs';
-*/
+PRAGMA foreign_keys=ON;
 
-UPDATE User SET balance=200 WHERE username='lucascs';
-SELECT username, balance FROM User WHERE username='lucascs';
-DELETE FROM Purchase WHERE user='lucascs' AND (game = 4 or game = 5);
-INSERT INTO Purchase VALUES('lucascs', 4, 120.0, strftime('%s', '2021-01-05'), 1);
-SELECT username, balance FROM User WHERE username='lucascs';
-INSERT INTO Purchase VALUES('lucascs', 5, 90.0, strftime('%s', '2021-01-05'), 1);
-SELECT username, balance FROM User WHERE username='lucascs';
+DELETE FROM Friends WHERE user1='lucascs' AND user2='melmel';
+SELECT * FROM Friends;
+INSERT INTO Friends VALUES('lucascs', 'melmel'); -- valid
+INSERT INTO Friends VALUES('lucascs', 'zeppf'); -- invalid because pair already exists (switched)
+INSERT INTO Friends VALUES('jfred24', 'jfred24'); -- invalid because a user cannot be friends with itself
+SELECT * FROM Friends;

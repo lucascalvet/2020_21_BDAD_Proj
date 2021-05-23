@@ -156,8 +156,6 @@ INSERT INTO MessageReceiver values(8, 'inesinhaowo');
 INSERT INTO MessageReceiver values(9, 'watson');
 
 
-
-
 INSERT INTO ReleaseOS values(1, 'Windows');
 INSERT INTO ReleaseOS values(1, 'MacOS');
 INSERT INTO ReleaseOS values(2, 'Linux');
@@ -175,6 +173,7 @@ INSERT INTO Purchase values('melmel', 3, 109.99, strftime('%s', '2021-01-04'), 2
 INSERT INTO Purchase values('jfred24', 14, 39.99, strftime('%s', '2017-05-26'), 3);
 INSERT INTO Purchase values('souto', 4, 99.99, strftime('%s', '2020-01-03'), 8);
 INSERT INTO Purchase values('souto', 3, 109.99, strftime('%s', '2020-01-03'), 8);
+
 
 INSERT INTO Achievements values(NULL, "Good Goose", "Honk if you are happy" , 1);
 INSERT INTO Achievements values(NULL, "Bad Goose", "Honk if you don't like ducks" , 1);
