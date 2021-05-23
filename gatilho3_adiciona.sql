@@ -1,14 +1,16 @@
+
 DROP TRIGGER IF EXISTS generatePrice;
 CREATE TRIGGER generatePrice
 AFTER INSERT ON Purchase
 BEGIN
+    -- check if a price was given, else calculate the game price (taking active promotions into account)
     UPDATE Purchase
     SET price = 
     CASE
-        WHEN NEW.price IS NULL
+        WHEN NEW.price IS NULL -- inserted NULL price, calculate game price
         THEN
             CASE
-                WHEN NEW.Game IN (
+                WHEN NEW.Game IN ( -- game is in promotion, calculate promotion price
                     SELECT game AS id
                     FROM GamePromotion NATURAL JOIN (
                         SELECT id AS promotion, percentage
@@ -27,27 +29,28 @@ BEGIN
                         )
                         GROUP BY id
                     )
-                )
+                ) -- game is not in promotion, use base price
                 ELSE (
                     SELECT price FROM Game WHERE id=NEW.game
                 )
             END
-        ELSE
+        ELSE -- price was set on insertion, use that price (real users would not be able to do this)
             NEW.price
     END
     WHERE user=NEW.user AND game=NEW.Game;
 
+    -- check if the user has enough balance to buy the game and update the balance
     UPDATE User
     SET balance =
     CASE
-        WHEN NOT EXISTS (
+        WHEN NOT EXISTS ( -- user doesn't have enough balance
         SELECT username, balance FROM User
         WHERE user.username = NEW.user AND user.balance >= (SELECT price FROM Purchase WHERE user=NEW.user AND game=NEW.Game)
         )
         THEN
         RAISE(ABORT, "Not enough balance to buy the game!")
 
-        ELSE
+        ELSE -- user has enough balance, update balance
         balance - (SELECT price FROM Purchase WHERE user=NEW.user AND game=NEW.Game)
     END
     WHERE username=NEW.user;
